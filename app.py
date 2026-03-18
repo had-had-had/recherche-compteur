@@ -30,4 +30,3 @@ def update():
     df.to_excel(file, index=False)
 
     return redirect("/")
-app.run(debug=True)
