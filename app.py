@@ -3,7 +3,9 @@ import pandas as pd
 
 app = Flask(__name__)
 
-file = "data.xlsx"
+import os
+
+file = os.path.join(os.path.dirname(__file__), "data.xlsx")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
