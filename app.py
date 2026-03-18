@@ -16,7 +16,7 @@ def index():
 
     data = df.to_dict(orient="records")
 
-    return render_template("index.html", data=data)
+    return "klemek s7i7"
 
 @app.route("/update", methods=["POST"])
 def update():
@@ -30,3 +30,4 @@ def update():
     df.to_excel(file, index=False)
 
     return redirect("/")
+app.run(debug=True)
