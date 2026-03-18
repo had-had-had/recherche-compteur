@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="/static/style.css">
+
+<title>Compteur</title>
+
+</head>
+
+<body>
+
+<h2>Recherche compteur</h2>
+
+<form method="POST">
+
+<input type="text" name="numctr" placeholder="NUM_CTR">
+
+<button type="submit">Chercher</button>
+
+</form>
+
+<br>
+
+<table>
+
+<tr>
+
+<th>NUM_CTR</th>
+<th>NOM_ADRESS</th>
+<th>INDEX_DEPS</th>
+<th>Modifier</th>
+
+</tr>
+
+{% for row in data %}
+
+<tr>
+
+<td>{{row["NUM_CTR"]}}</td>
+<td>{{row["NOM_ADRESS"]}}</td>
+
+<td>
+
+<form action="/update" method="POST">
+
+<input type="hidden" name="num" value="{{row['NUM_CTR']}}">
+
+<input type="text" name="index" value="{{row['INDEX_DEPS']}}">
+
+<button type="submit">Enregistrer</button>
+
+</form>
+
+</td>
+
+<td></td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>
