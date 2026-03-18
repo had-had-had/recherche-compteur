@@ -16,7 +16,7 @@ def index():
 
     data = df.to_dict(orient="records")
 
-    return "klemek s7i7"
+    return render_template("index.html", data=data)
 
 @app.route("/update", methods=["POST"])
 def update():
