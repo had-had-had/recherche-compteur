@@ -1,18 +1,13 @@
 from flask import Flask, render_template, request, redirect
 import pandas as pd
-import os
 
 app = Flask(__name__)
 
-# المسار الصحيح للملف
-file = os.path.join(os.path.dirname(__file__), "data.xlsx")
+file = "data.xlsx"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     df = pd.read_excel(file)
-
-    # نحيد أي space مخفي في أسماء الأعمدة
-    df.columns = df.columns.str.strip()
 
     search = request.form.get("numctr")
 
@@ -29,9 +24,6 @@ def update():
     new_index = request.form.get("index")
 
     df = pd.read_excel(file)
-
-    # نفس الشي نحيد spaces
-    df.columns = df.columns.str.strip()
 
     df.loc[df["NUM_CTR"].astype(str) == num, "INDEX_DEPS"] = new_index
 
